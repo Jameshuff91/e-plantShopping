@@ -250,3 +250,114 @@ body {
         text-align: center; /* Align text to the center */
       }
   }
+
+/* Category Section Styles */
+.category-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+    padding: 20px;
+}
+
+/* Plant Card Styles */
+.plant-card {
+    flex: 0 0 calc(33.33% - 20px);
+    max-width: 300px;
+    min-width: 250px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.plant-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.plant-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.plant-card h3 {
+    color: #333;
+    margin: 10px 0;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.plant-card p {
+    color: #666;
+    margin: 8px 0;
+    line-height: 1.4;
+}
+
+.plant-card p:last-of-type {
+    color: #4CAF50;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Add to Cart Button */
+.add-to-cart-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.add-to-cart-button:hover {
+    background-color: #45a049;
+}
+
+.add-to-cart-button:active {
+    transform: translateY(1px);
+}
+
+/* Category Headings */
+.product-grid h2 {
+    text-align: center;
+    color: #333;
+    margin: 30px 0 20px 0;
+    font-size: 1.8em;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 10px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive adjustments for plant cards */
+@media (max-width: 1200px) {
+    .plant-card {
+        flex: 0 0 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .plant-card {
+        flex: 0 0 calc(100% - 20px);
+        max-width: none;
+    }
+    
+    .category-section {
+        padding: 10px;
+    }
+}
