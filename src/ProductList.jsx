@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { addItem } from './CartSlice';
 import './ProductList.css'
 import CartItem from './CartItem';
 function ProductList({ onHomeClick }) {
     const [showCart, setShowCart] = useState(false);
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
+    const [addedToCart, setAddedToCart] = useState({}); // State to track which products are added to the cart
+    const dispatch = useDispatch();
 
     const plantsArray = [
         {
@@ -252,6 +256,15 @@ function ProductList({ onHomeClick }) {
         e.preventDefault();
         setShowCart(false);
     };
+
+    const handleAddToCart = (plant) => {
+        dispatch(addItem(plant));
+        setAddedToCart((prevState) => ({
+            ...prevState,
+            [plant.name]: true, // Set the product name as key and value to true
+        }));
+    };
+
     return (
         <div>
             <div className="navbar" style={styleObj}>
@@ -284,7 +297,13 @@ function ProductList({ onHomeClick }) {
                                     <h3>{plant.name}</h3>
                                       <p>{plant.description}</p>
                                       <p>{plant.cost}</p>
-                                      <button className="add-to-cart-button">Add To Cart</button>
+                                      <button 
+                                        className={`add-to-cart-button ${addedToCart[plant.name] ? 'added-to-cart' : ''}`}
+                                        onClick={() => handleAddToCart(plant)}
+                                        disabled={addedToCart[plant.name]}
+                                      >
+                                        {addedToCart[plant.name] ? 'Added to Cart' : 'Add To Cart'}
+                                      </button>
                                 </div>
                              ))}
                          </div>
